@@ -149,7 +149,7 @@ final class ProductCell: UITableViewCell {
         ])
     }
     
-    func reload(with product: Product) {
+    public func reload(with product: Product) {
         setImage(from: product.thumbnail)
         productTitleLabel.text = product.title
         descriptionLabel.text = product.description
@@ -158,7 +158,7 @@ final class ProductCell: UITableViewCell {
         selectedQuantityLabel.text = "\(product.selectedAmount ?? 0)"
     }
     
-    func updateQuantityLabel(with product: Product) {
+    public func updateQuantityLabel(with product: Product) {
         selectedQuantityLabel.text = "\(product.selectedAmount ?? 0)"
     }
     

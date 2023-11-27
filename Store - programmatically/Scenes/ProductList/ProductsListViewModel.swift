@@ -40,6 +40,7 @@ class ProductsListViewModel {
         var product = products[index]
         guard product.stock > 0 else { return }
         product.selectedAmount = (product.selectedAmount ?? 0) + 1
+        product.stock -= 1
         self.products?[index] = product
         delegate?.productsAmountChanged()
     }
@@ -49,6 +50,7 @@ class ProductsListViewModel {
         var product = products[index]
         guard let selectedAmount = product.selectedAmount, selectedAmount > 0 else { return }
         product.selectedAmount = selectedAmount - 1
+        product.stock += 1
         self.products?[index] = product
         delegate?.productsAmountChanged()
     }

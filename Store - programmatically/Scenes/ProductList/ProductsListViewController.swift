@@ -34,7 +34,7 @@ class ProductsListViewController: UIViewController {
         return label
     }()
     
-    private var products = [Product]()
+    var products = [Product]()
     
     private let productsViewModel = ProductsListViewModel()
     
@@ -47,14 +47,14 @@ class ProductsListViewController: UIViewController {
     }
     
     //MARK: setup UI
-    func setupUI() {
+    private func setupUI() {
         view.backgroundColor = UIColor(red: 26/255.0, green: 34/255.0, blue: 50/255.0, alpha: 1)
         setupTableView()
         setupIndicator()
         setupTotalPriceLabel()
     }
     
-    func setupTableView() {
+    private func setupTableView() {
         view.addSubview(productsTableView)
         
         NSLayoutConstraint.activate([
@@ -69,7 +69,7 @@ class ProductsListViewController: UIViewController {
         productsTableView.delegate = self
     }
     
-    func setupIndicator() {
+    private func setupIndicator() {
         
         view.addSubview(activityIndicator)
         
@@ -79,7 +79,7 @@ class ProductsListViewController: UIViewController {
         ])
     }
     
-    func setupTotalPriceLabel() {
+    private func setupTotalPriceLabel() {
         view.addSubview(totalPriceLabel)
         
         NSLayoutConstraint.activate([
@@ -160,6 +160,4 @@ extension ProductsListViewController: ProductCellDelegate {
         cell.updateQuantityLabel(with: products[indexPath.row])
     }
 }
-
-
 
