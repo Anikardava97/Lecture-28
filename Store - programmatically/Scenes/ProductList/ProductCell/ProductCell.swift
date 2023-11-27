@@ -144,8 +144,7 @@ final class ProductCell: UITableViewCell {
             productImageView.widthAnchor.constraint(equalToConstant: 100),
             
             productInfoStackView.leadingAnchor.constraint(equalTo: productImageView.trailingAnchor, constant: 8),
-            productInfoStackView.widthAnchor.constraint(equalToConstant: 120),
-            
+            productInfoStackView.widthAnchor.constraint(equalToConstant: 120)
         ])
     }
     
@@ -158,8 +157,9 @@ final class ProductCell: UITableViewCell {
         selectedQuantityLabel.text = "\(product.selectedAmount ?? 0)"
     }
     
-    public func updateQuantityLabel(with product: Product) {
+    public func updateQuantityAndStockLabel(with product: Product) {
         selectedQuantityLabel.text = "\(product.selectedAmount ?? 0)"
+        stockLabel.text = "\(product.stock)"
     }
     
     private func setImage(from url: String) {

@@ -147,17 +147,22 @@ extension ProductsListViewController: ProductsListViewModelDelegate {
 // MARK: - ProductCellDelegate
 extension ProductsListViewController: ProductCellDelegate {
     func addProduct(for cell: ProductCell?) {
-        guard let cell, let indexPath = productsTableView.indexPath(for: cell) else { return }
-        self.productsViewModel.addProduct(at: indexPath.row)
-        self.products[indexPath.row].selectedAmount = productsViewModel.products?[indexPath.row].selectedAmount
-        cell.updateQuantityLabel(with: products[indexPath.row])
+        if let indexPath = productsTableView.indexPath(for: cell!) {
+            productsViewModel.addProduct(at: indexPath.row)
+            
+            if let updatedInfo = productsViewModel.products?[indexPath.row] {
+                cell?.updateQuantityAndStockLabel(with: updatedInfo)
+            }
+        }
     }
     
     func removeProduct(for cell: ProductCell?) {
-        guard let cell, let indexPath = productsTableView.indexPath(for: cell) else { return }
-        self.productsViewModel.removeProduct(at: indexPath.row)
-        self.products[indexPath.row].selectedAmount = productsViewModel.products?[indexPath.row].selectedAmount
-        cell.updateQuantityLabel(with: products[indexPath.row])
+        if let indexPath = productsTableView.indexPath(for: cell!) {
+            productsViewModel.removeProduct(at: indexPath.row)
+            
+            if let updatedInfo = productsViewModel.products?[indexPath.row] {
+                cell?.updateQuantityAndStockLabel(with: updatedInfo)
+            }
+        }
     }
 }
-
